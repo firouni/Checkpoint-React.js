@@ -1,46 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
-import ThemeProvider from 'react-bootstrap/ThemeProvider';
-import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./layouts/header/Header.js";
+import Footer from "./layouts/footer/Footer.js";
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
-function PrefixesExample() {
+const App = () => {
   return (
-    <>
-      {/* Hint: inspect the markup to see how the classes differ */}
-      <ThemeProvider prefixes={{ btn: 'my-btn' }}>
-        <Button variant="primary">My Button</Button>
-      </ThemeProvider>{' '}
-      <Button bsPrefix="super-btn" variant="primary">
-        Super button
+    <div className="App">
+      <Header title="My header" subtitle="subtitle2" />
+
+    <Form>
+      <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+        <Form.Label column sm="2">
+          Email
+        </Form.Label>
+        <Col sm="10">
+          <Form.Control plaintext readOnly defaultValue="email@example.com" />
+        </Col>
+      </Form.Group>
+
+      <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+        <Form.Label column sm="2">
+          Password
+        </Form.Label>
+        <Col sm="10">
+          <Form.Control type="password" placeholder="Password" />
+        </Col>
+      </Form.Group>
+
+      <Form.Control size="lg" type="text" placeholder="Large text" />
+      <br />
+      <Form.Control type="text" placeholder="Normal text" />
+      <br />
+      <Form.Control size="sm" type="text" placeholder="Small text" />
+      <br />
+      <Button variant="primary" type="submit">
+        Submit
       </Button>
-    </>
-  );
+    </Form>
+
+    <Footer note="Footer Note" />
+  </div>
+  )
 }
 
-function App() {
-  return (
-    <Alert variant="success">
-      <Alert.Heading>Hey, nice to see you</Alert.Heading>
-      <p>
-        Aww yeah, you successfully read this important alert message. This
-        example text is going to run a bit longer so that you can see how
-        spacing within an alert works with this kind of content.
-      </p>
-      <hr />
-      <p className="mb-0">
-        Whenever you need to, be sure to use margin utilities to keep things
-        nice and tidy.
-      </p>
-    </Alert>
-  );
-}
-
-<link
-rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-crossorigin="anonymous"
-/>
-export default App;
+export default App
